@@ -1,0 +1,36 @@
+spring:
+  application:
+    #\u914D\u7F6E\u5E94\u7528\u540D
+    name: mybatisplusdemo
+  profiles:
+    active: local
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  #\u6570\u636E\u5E93\u8FDE\u63A5
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${db.host}:${db.port}/${db.name}?&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
+    username: ${db.username}
+    password: ${db.password}
+    initialSize: ${db.initialSize}
+    minIdle: ${db.minIdle}
+    maxActive: ${db.maxActive}
+    maxWait: ${db.maxWait}
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 200
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
+
+#\u914D\u7F6E\u65E5\u5FD7
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
