@@ -27,7 +27,7 @@ class MybatisplusDemoApplicationTests {
         userList.forEach(System.out::println);
 
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        lambdaQueryWrapper.eq(User::getId,1);
+        lambdaQueryWrapper.eq(User::getId, 1);
         User user = userMapper.selectOne(lambdaQueryWrapper);
         System.err.println(user);
 
@@ -48,7 +48,7 @@ class MybatisplusDemoApplicationTests {
     }
 
     @Test
-    public void testUpdate(){
+    public void testUpdate() {
         User user = new User();
         user.setId(5L);
         user.setName("id:5,修改过后");
